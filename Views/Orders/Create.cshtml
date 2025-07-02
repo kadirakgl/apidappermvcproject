@@ -1,0 +1,35 @@
+@model apidappermvcproje.Models.Order
+@{
+    ViewData["Title"] = "Yeni Sipariş Ekle";
+    var customers = ViewBag.Customers as IEnumerable<apidappermvcproje.Models.Customer>;
+    var products = ViewBag.Products as IEnumerable<apidappermvcproje.Models.Product>;
+}
+<h1>Yeni Sipariş Ekle</h1>
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="CustomerId">Müşteri</label>
+        <select asp-for="CustomerId" class="form-control" asp-items="@(new SelectList(customers, "Id", "FirstName"))">
+            <option value="">Seçiniz</option>
+        </select>
+        <span asp-validation-for="CustomerId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductId">Ürün</label>
+        <select asp-for="ProductId" class="form-control" asp-items="@(new SelectList(products, "Id", "Name"))">
+            <option value="">Seçiniz</option>
+        </select>
+        <span asp-validation-for="ProductId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Quantity"></label>
+        <input asp-for="Quantity" class="form-control" />
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Status"></label>
+        <input asp-for="Status" class="form-control" />
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a asp-action="Index" class="btn btn-secondary">İptal</a>
+</form> 

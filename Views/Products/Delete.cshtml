@@ -1,0 +1,14 @@
+@model apidappermvcproje.Models.Product
+@{
+    ViewData["Title"] = "Ürün Sil";
+}
+<h1>Ürün Sil</h1>
+<h3>Silmek istediğinize emin misiniz?</h3>
+<div>
+    <h4>@Model.Name - @Model.Price ₺</h4>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Sil</button>
+        <a asp-action="Index" class="btn btn-secondary">İptal</a>
+    </form>
+</div> 

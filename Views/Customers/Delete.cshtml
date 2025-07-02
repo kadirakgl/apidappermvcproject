@@ -1,0 +1,14 @@
+@model apidappermvcproje.Models.Customer
+@{
+    ViewData["Title"] = "Müşteri Sil";
+}
+<h1>Müşteri Sil</h1>
+<h3>Silmek istediğinize emin misiniz?</h3>
+<div>
+    <h4>@Model.FirstName @Model.LastName - @Model.Email</h4>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Sil</button>
+        <a asp-action="Index" class="btn btn-secondary">İptal</a>
+    </form>
+</div> 

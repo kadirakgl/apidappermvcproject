@@ -1,0 +1,32 @@
+@model IEnumerable<apidappermvcproje.Models.Category>
+@{
+    ViewData["Title"] = "Kategoriler";
+}
+<h1>Kategoriler</h1>
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Create")">Yeni Kategori Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ad</th>
+            <th>Açıklama</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>
+                <a class="btn btn-sm btn-warning" href="@Url.Action("Edit", new { id = item.Id })">Düzenle</a>
+                <a class="btn btn-sm btn-danger" href="@Url.Action("Delete", new { id = item.Id })">Sil</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table> 
